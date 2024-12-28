@@ -1,0 +1,154 @@
+* {
+    margin: 0;
+    padding: 0;
+    /* box-sizing: border-box; */
+}
+
+body {
+    background-color: #1a1a1a;
+    font-family: 'Courier New', monospace;
+    height: 100vh;
+     display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-left: 50px;
+}
+
+.ascii-art {
+    color: #00FF00;
+    white-space: pre;
+    font-family: monospace;
+    text-align: center;
+    text-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+    }
+    to {
+        text-shadow: 0 0 20px rgba(0, 255, 0, 0.8);
+    }
+}
+
+.terminal-window {
+    width: 100%;
+    max-width: 90vw;
+    height: 600px;
+    background-color: #0C0C0C;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+
+.terminal-header {
+    background-color: #2D2D2D;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.window-button {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.close { background-color: #FF5F56; }
+.minimize { background-color: #FFBD2E; }
+.maximize { background-color: #27C93F; }
+
+.terminal-body {
+    height: calc(100% - 35px); 
+    padding: 10px;
+    overflow-y: auto;
+    color: #00FF00;
+    position: relative;
+}
+
+.command-line {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 12px;
+    opacity: 0;
+    animation: fadeIn 0.3s forwards;
+}
+
+.prompt {
+    color: #00FF00;
+}
+
+.command {
+    color: #FFFFFF;
+}
+
+.output {
+    color: #00FF00;
+    margin-bottom: 16px;
+    padding-left: 20px;
+    opacity: 0;
+    animation: fadeIn 0.3s forwards;
+}
+
+.input-line {
+    display: flex;
+    gap: 8px;
+}
+
+/* Updated input field and cursor styling */
+.input-field {
+    background: transparent;
+    border: none;
+    color: #FFFFFF;
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    width: 100%;
+    outline: none;
+    padding: 0;
+    position: relative;
+    /* Remove the caret-color: transparent */
+}
+
+/* Create the blinking cursor effect using a pseudo-element */
+.input-field::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 8px;
+    height: 15px;
+    background-color: #00FF00;
+    animation: blink 1s step-end infinite;
+}
+
+/* Style the text selection to match terminal */
+.input-field::selection {
+    background-color: #00FF00;
+    color: #0C0C0C;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.terminal-body::-webkit-scrollbar {
+    width: 8px;
+}
+
+.terminal-body::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+
+.terminal-body::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 4px;
+}

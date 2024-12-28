@@ -1,0 +1,72 @@
+package templates
+
+templ Home() {
+	<div class="ascii-art"></div>
+	<div class="terminal-window">
+		// <div class="terminal-header">
+		// 	<span class="window-button close"></span>
+		// 	<span class="window-button minimize"></span>
+		// 	<span class="window-button maximize"></span>
+		// </div>
+		<div class="terminal-body" id="terminal-body">
+			// <div class="command-line">
+			// 	<span class="prompt">$</span>
+			// 	<span class="command">whoami</span>
+			// </div>
+			// <div class="output">guest@terminal</div>
+			// <div class="command-line">
+			// 	<span class="prompt">$</span>
+			// 	<span class="command">ls -la</span>
+			// </div>
+			// <div class="output">
+			// 	total 4
+			// 	<br/>
+			// 	drwxr-xr-x  2 user user 4096 Dec 26 10:00 .
+			// 	<br/>
+			// 	drwxr-xr-x  3 user user 4096 Dec 26 10:00 ..
+			// 	<br/>
+			// 	-rw-r--r--  1 user user    0 Dec 26 10:00 secret.txt
+			// </div>
+			<div class="input-line">
+				<span class="prompt">$</span>
+				<input
+					type="text"
+					class="input-field"
+					name="input"
+					hx-post="/execute"
+					hx-trigger="keyup[key=='Enter']"
+					hx-target="#terminal-body"
+					hx-swap="beforeend"
+					autofocus
+				/>
+			</div>
+		</div>
+	</div>
+}
+
+templ Output(output string) {
+	<div class="output">
+		<pre>
+			{ output }
+		</pre>
+	</div>
+	<div class="input-line">
+		<span class="prompt">$</span>
+		<input
+			type="text"
+			class="input-field"
+			name="input"
+			hx-post="/execute"
+			hx-trigger="keyup[key=='Enter']"
+			hx-target="#terminal-body"
+			hx-swap="beforeend"
+			autofocus
+		/>
+	</div>
+}
+
+templ HomePage() {
+	@PageBuilder(
+		Home(),
+	)
+}
