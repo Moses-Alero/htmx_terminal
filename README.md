@@ -5,5 +5,5 @@ Simple web-based terminal interface using [HTMX](https://htmx.org/), allowing us
 
 ## Demo
 
-![Web-Based Terminal Demo](https://res.cloudinary.com/alero/video/upload/v1735402298/la34fdfstowclnw5zp6m.mp4)
+![Web-Based Terminal Demo](https://res.cloudinary.com/alero/video/upload/v1735402888/jhgxsyghdzb74vemhcel.mp4)
  
